@@ -7,14 +7,12 @@
             <AppBar />
             
             <v-main class="pa-md-10 pa-sm-5">
-                <v-row>
-                    <v-col cols="12" md="3" sm="12" lg="3">
-                        <SideNavigation height="90"/>
-                    </v-col>
-                    <v-col cols="12" md="9" sm="12" lg="9">
+                <SideNavigation class="float-left mr-5"/>
+            <v-row>
+                <v-col cols="12">
                         <v-row>
                             <v-col cols="12" lg="6" md="6" sm="12">
-                                <v-container class="white pa-10 rounded-lg" light>
+                                <v-sheet class="pa-10 rounded-lg " outlined light>
                                     <v-row justify="center" align="center">
                                         <v-col cols="12" class="text-center">
                                             <v-icon large color="red lighten-4" style="font-size: 60px">mdi-book-open-page-variant-outline</v-icon>
@@ -23,10 +21,10 @@
                                             <p class="text--secondary">No class is currently in session</p>
                                         </v-col>
                                     </v-row>
-                                </v-container>
+                                </v-sheet>
                             </v-col>
                             <v-col cols="12" lg="6" md="6" sm="12" v-if="niit__user_.type == '2'">
-                                <v-container class="white pa-10 rounded-lg" light>
+                                <v-sheet class="pa-10 rounded-lg " outlined>
                                     <router-link :to="{ name: 'Documents'}">
                                         <v-row justify="center" align="center">
                                             <v-col cols="12" class="text-center">
@@ -37,10 +35,10 @@
                                             </v-col>
                                         </v-row>
                                     </router-link>
-                                </v-container>
+                                </v-sheet>
                             </v-col>
                             <v-col cols="12" lg="6" md="6" sm="12" v-if="niit__user_.type == '2'">
-                                <v-container class="white pa-10 rounded-lg" light>
+                                <v-sheet class="pa-10 rounded-lg " outlined>
                                     <v-row justify="center" align="center">
                                         <v-col cols="12" class="text-center">
                                             <v-icon large color="red lighten-4" style="font-size: 60px">mdi-video-off-outline</v-icon>
@@ -49,10 +47,10 @@
                                             <p class="text--secondary">Most recent vidoes will be listed here</p>
                                         </v-col>
                                     </v-row>
-                                </v-container>
+                                </v-sheet>
                             </v-col>
                             <v-col cols="12" lg="6" md="6" sm="12" v-if="niit__user_.type == '2'">
-                                <v-container class="white pa-10 rounded-lg" light>
+                                <v-sheet class="pa-10 rounded-lg " outlined>
                                     <v-row justify="center" align="center">
                                         <v-col cols="12" class="text-center">
                                             <v-icon large color="red lighten-4" style="font-size: 60px">mdi-book-off-outline</v-icon>
@@ -61,10 +59,10 @@
                                             <p class="text--secondary">New class assignments will be listed here</p>
                                         </v-col>
                                     </v-row>
-                                </v-container>
+                                </v-sheet>
                             </v-col>
                             <v-col cols="12" lg="6" md="6" sm="12" v-if="niit__user_.type == '3'">
-                                <v-container class="white pa-10 border-1 rounded-lg" border-1  light>
+                                <v-sheet class="pa-10 rounded-lg " outlined>
                                     <v-row justify="center" align="center">
                                         <v-col cols="12" class="text-center">
                                             <v-icon large color="red lighten-4" style="font-size: 60px">mdi-book-outline</v-icon>
@@ -73,10 +71,10 @@
                                             <p class="text--secondary">Create Assignment</p>
                                         </v-col>
                                     </v-row>
-                                </v-container>
+                                </v-sheet>
                             </v-col>
                             <v-col cols="12" lg="6" md="6" sm="12" v-if="niit__user_.type == '3'">
-                                <v-container class="white pa-10 rounded-lg" light>
+                                <v-sheet class="pa-10 rounded-lg " outlined>
                                     <v-row justify="center" align="center">
                                         <v-col cols="12" class="text-center">
                                             <v-icon large color="red lighten-4" style="font-size: 60px">mdi-video-outline</v-icon>
@@ -85,10 +83,10 @@
                                             <p class="text--secondary">My Videos</p>
                                         </v-col>
                                     </v-row>
-                                </v-container>
+                                </v-sheet>
                             </v-col>
                             <v-col cols="12" lg="6" md="6" sm="12" v-if="niit__user_.type == '3'">
-                                <v-container class="white pa-10 rounded-lg container_outlined" light>
+                                <v-sheet class="pa-10 rounded-lg " outlined>
                                     <v-row justify="center" align="center">
                                         <v-col cols="12" class="text-center">
                                             <v-icon large color="red lighten-4" style="font-size: 60px">mdi-bell-ring</v-icon>
@@ -97,7 +95,7 @@
                                             <p class="text--secondary">Post Announcement</p>
                                         </v-col>
                                     </v-row>
-                                </v-container>
+                                </v-sheet>
                             </v-col>
                         </v-row>
                     </v-col>
@@ -144,8 +142,13 @@ export default {
     methods: {
         
     },
-
-    mounted() {
+    mounted: function() {
+      let elHtml = document.getElementsByTagName('html')[0]
+      elHtml.style.overflowY = 'hidden'
+    },
+    destroyed: function() {
+      let elHtml = document.getElementsByTagName('html')[0]
+      elHtml.style.overflowY = null
     },
 
     created() {
@@ -164,6 +167,9 @@ export default {
 <style scoped>
     .nav-bar {
         border-bottom: 1px solid #eee !important;
+    }
+    .theme--light.v-sheet--outlined {
+        border: thin solid #eeeeee !important;
     }
 </style>
 

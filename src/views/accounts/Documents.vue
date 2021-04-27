@@ -3,11 +3,9 @@
         <AppBar />
             
         <v-main class="pa-md-10">
+            <SideNavigation class="float-left mr-5"/>
             <v-row>
-                <v-col cols="12" md="3" sm="12" lg="3">
-                    <SideNavigation />
-                </v-col>
-                <v-col cols="12" md="9" sm="12" lg="9">
+                <v-col cols="12">
                     <v-container class="white fill-height pa-10 rounded-lg" light v-if="!documents">
                         <v-row justify="center" align="center">
                             <v-col cols="12" class="text-center">

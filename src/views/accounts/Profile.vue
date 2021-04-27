@@ -3,11 +3,9 @@
         <AppBar />
         
         <v-main class="pa-10">
+            <SideNavigation class="float-left mr-5"/>
             <v-row>
-                <v-col cols="3" class="d-sm-none d-md-flex">
-                    <SideNavigation />
-                </v-col>
-                <v-col cols="9">
+                <v-col cols="12">
                     <v-row>
                         <v-col cols="12" md="6" lg="6" sm="12">
                             <v-container class="white pa-5 rounded-lg" light>
@@ -22,28 +20,28 @@
                                 <hr class="divider mt-5">
                                 <div>
                                     <h4 class="text--secondary mb-2">Email</h4>
-                                    <v-alert color="indigo lighten-5">
+                                    <v-alert color="grey" outlined>
                                         {{ niit__user_.email }}
                                     </v-alert>
 
                                     <h4 class="text--secondary mb-2">Mobile number</h4>
-                                    <v-alert color="indigo lighten-5">
+                                    <v-alert color="grey" outlined>
                                         {{ niit__user_.mobile }}
                                     </v-alert>
 
                                     <h4 class="text--secondary mb-2" v-if="niit__user_.type == '2'">Registered Course</h4>
                                     <h4 class="text--secondary mb-2" v-if="niit__user_.type == '3'">Course of Focus</h4>
                                     <h4 class="text--secondary mb-2" v-else>Account Type</h4>
-                                    <v-alert color="indigo lighten-5" v-if="niit__user_.type == '2' || niit__user_.type == '3'">
+                                    <v-alert color="grey" outlined v-if="niit__user_.type == '2' || niit__user_.type == '3'">
                                         {{ niit__user_.course | capitalize}}
                                     </v-alert>
-                                    <v-alert color="indigo lighten-5" v-if="niit__user_.type == '1'">
+                                    <v-alert color="grey" outlined v-if="niit__user_.type == '1'">
                                         Administrator
                                     </v-alert>
-                                    <v-alert color="indigo lighten-5" v-if="niit__user_.type == '4'">
+                                    <v-alert color="grey" outlined v-if="niit__user_.type == '4'">
                                         Staff
                                     </v-alert>
-                                    <v-alert color="indigo lighten-5" v-if="niit__user_.type == '5'">
+                                    <v-alert color="grey" outlined v-if="niit__user_.type == '5'">
                                         Director
                                     </v-alert>
                                 </div>
@@ -54,14 +52,6 @@
                                 <h3>Change Login Password</h3>
                                 <hr class="divider">
                                 <v-form @keyup.enter="updateData()">
-                                    <div>            
-                                        <label for="old_password" class="font-weight-bold text--secondary mb-2" >Old Password</label>
-                                        <v-text-field
-                                            placeholder="Enter your old password" :rules="[rules.required,rules.min]" 
-                                            outlined type="password" v-model="form.old_passsword" dense
-                                            :error-messages="error.old_passsword" class="mt-1"
-                                        ></v-text-field>
-                                    </div>
                                     <div>
                                         <label for="new_password" class="font-weight-bold text--secondary mb-2">New Password</label>
                                         <v-text-field
@@ -79,7 +69,7 @@
                                         ></v-text-field>
                                     </div>
                                 <div>
-                                <v-btn color="indigo ligthen-5 font-weight-bold" style="color: white" :loading="loading" :disabled="form.old_passsword == '' || form.new_password == ''" @click.prevent="updateData()" large block light>
+                                <v-btn color="green ligthen-5 font-weight-bold" style="color: white" :loading="loading" :disabled="form.old_passsword == '' || form.new_password == ''" @click.prevent="updateData()" large block light>
                                     Change Password
                                 </v-btn>
                   </div>

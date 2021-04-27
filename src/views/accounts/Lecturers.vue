@@ -3,11 +3,9 @@
         <AppBar />
             
         <v-main class="pa-md-10">
+            <SideNavigation class="float-left mr-5"/>
             <v-row>
-                <v-col cols="12" md="3" sm="12" lg="3">
-                    <SideNavigation />
-                </v-col>
-                <v-col cols="12" md="9" sm="12" lg="9" class="white fill-height px-10 py-10 rounded-lg" >
+                <v-col cols="12" class="white fill-height px-10 py-10 rounded-lg" >
                     <v-text-field v-model="search" class="mr-4" outlined append-icon="mdi-magnify" label="Search"></v-text-field>
 
                     <v-data-table :headers="headers" :items="lecturers" :search="search" class="elevation-1">

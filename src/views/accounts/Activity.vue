@@ -3,14 +3,12 @@
         <AppBar />
             
         <v-main class="pa-md-10">
+            <SideNavigation class="float-left mr-5"/>
             <v-row>
-                <v-col cols="12" md="3" sm="12" lg="3">
-                    <SideNavigation />
-                </v-col>
-                <v-col cols="12" md="9" sm="12" lg="9">
+                <v-col cols="12">
                     <v-row>
                         <v-col cols="12" lg="4" md="4" sm="12">
-                            <v-container class="white fill-height pa-10 rounded-lg" light v-if="!documents">
+                            <v-sheet class="pa-10 rounded-lg " outlined light v-if="!documents">
                                 <v-row justify="center" align="center">
                                     <v-col cols="12" class="text-center">
                                         <v-icon large color="red lighten-4" style="font-size: 60px">mdi-book-open-page-variant-outline</v-icon>
@@ -19,10 +17,10 @@
                                         <p class="text--secondary">Start A class</p>
                                     </v-col>
                                 </v-row>
-                            </v-container>
+                            </v-sheet>
                         </v-col>
                         <v-col cols="12" md="4" sm="12" lg="4" light>
-                            <v-container class="white pa-10 rounded-lg">
+                            <v-sheet class="pa-10 rounded-lg " outlined light>
                                 <v-row justify="center">
                                     <v-dialog v-model="upvideo" persistent max-width="600px">
                                         <template v-slot:activator="{ on, attrs }">
@@ -74,10 +72,10 @@
                                         </v-card>
                                     </v-dialog>
                                 </v-row>
-                            </v-container>
+                            </v-sheet>
                         </v-col>
                         <v-col cols="12" md="4" sm="12" lg="4" light>
-                            <v-container class="white pa-10 rounded-lg">
+                            <v-sheet class="pa-10 rounded-lg " outlined light>
                                 <v-row justify="center">
                                     <v-dialog v-model="upvideo" persistent max-width="600px">
                                         <template v-slot:activator="{ on, attrs }">
@@ -129,10 +127,10 @@
                                         </v-card>
                                     </v-dialog>
                                 </v-row>
-                            </v-container>
+                            </v-sheet>
                         </v-col>
                         <v-col cols="12" md="4" sm="12" lg="4" light>
-                            <v-container class="white pa-10 rounded-lg">
+                            <v-sheet class="pa-10 rounded-lg " outlined light>
                                 <v-row justify="center" align="center">
                                     <v-col cols="12" class="text-center">
                                         <v-icon large color="red lighten-4" style="font-size: 60px">mdi-account-multiple</v-icon>
@@ -141,10 +139,10 @@
                                         <p class="text--secondary">My Students</p>
                                     </v-col>
                                 </v-row>
-                            </v-container>
+                            </v-sheet>
                         </v-col>
                         <!--v-col cols="12" md="4" sm="12" lg="4" light>
-                            <v-container class="white pa-10 rounded-lg">
+                            <v-sheet class="pa-10 rounded-lg " outlined light>
                                 <v-row justify="center" align="center">
                                     <v-col cols="12" class="text-center">
                                         <v-icon large color="red lighten-4" style="font-size: 60px">mdi-account-multiple</v-icon>
@@ -153,10 +151,10 @@
                                         <p class="text--secondary"></p>
                                     </v-col>
                                 </v-row>
-                            </v-container>
+                            </v-sheet>
                         </v-col-->
                         <v-col cols="12" md="4" sm="12" lg="4" light>
-                            <v-container class="white pa-10 rounded-lg">
+                            <v-sheet class="pa-10 rounded-lg " outlined light>
                                 <v-row justify="center" align="center">
                                     <v-col cols="12" class="text-center">
                                         <v-icon large color="red lighten-4" style="font-size: 60px">mdi-star-check-outline</v-icon>
@@ -165,10 +163,10 @@
                                         <p class="text--secondary">Students Review</p>
                                     </v-col>
                                 </v-row>
-                            </v-container>
+                            </v-sheet>
                         </v-col>
                         <v-col cols="12" md="4" sm="12" lg="4" light>
-                            <v-container class="white pa-10 rounded-lg">
+                            <v-sheet class="pa-10 rounded-lg " outlined light>
                                 <v-row justify="center" align="center">
                                     <v-col cols="12" class="text-center">
                                         <v-icon large color="red lighten-4" style="font-size: 60px">mdi-book-open-page-variant-outline</v-icon>
@@ -177,7 +175,7 @@
                                         <p class="text--secondary">My Classes</p>
                                     </v-col>
                                 </v-row>
-                            </v-container>
+                            </v-sheet>
                         </v-col>
                     </v-row>
                 </v-col>
@@ -217,10 +215,17 @@ export default {
 
     mounted() {
         this.isLoggedIn = this.$store.state.LoggedIn;
+        let elHtml = document.getElementsByTagName('html')[0]
+        elHtml.style.overflowY = 'hidden'
     },
 
     created() {
         Api.defaults.headers.common['Authorization'] = `Bearer ${this.token}`;
+    },
+
+    destroyed: function() {
+      let elHtml = document.getElementsByTagName('html')[0]
+      elHtml.style.overflowY = null
     }
 }
 </script>
@@ -228,5 +233,8 @@ export default {
 <style scoped>
     .nav-bar {
         border-bottom: 1px solid #eee !important;
+    }
+    .theme--light.v-sheet--outlined {
+        border: thin solid #eeeeee !important;
     }
 </style>
